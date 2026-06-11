@@ -3,61 +3,253 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Мій перший сайт</title>
+  <title>Oil Change Service Illinois</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #ffcc00;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+                  url("https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 120px 20px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #ffcc00;
+      color: #111;
+      padding: 14px 25px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      margin: 5px;
+    }
+
+    .btn:hover {
+      background: #e6b800;
+    }
+
+    section {
+      padding: 70px 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    section h2 {
+      text-align: center;
+      font-size: 34px;
+      margin-bottom: 30px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: #111;
+    }
+
+    .about {
+      background: white;
+      border-radius: 15px;
+      padding: 35px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .contact-box {
+      background: #111;
+      color: white;
+      border-radius: 15px;
+      padding: 35px;
+      text-align: center;
+    }
+
+    .contact-box p {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    footer {
       background: #111;
       color: white;
       text-align: center;
-      padding: 50px;
-      margin: 0;
+      padding: 25px;
+      margin-top: 40px;
     }
 
-    .box {
-      background: #222;
-      padding: 30px;
-      border-radius: 20px;
-      max-width: 600px;
-      margin: auto;
-      box-shadow: 0 0 20px rgba(255,255,255,0.1);
-    }
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
 
-    h1 {
-      color: #00ff88;
-    }
+      nav a {
+        display: inline-block;
+        margin: 5px 8px;
+      }
 
-    button {
-      padding: 12px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      background: #00ff88;
-    }
+      .hero h1 {
+        font-size: 34px;
+      }
 
-    button:hover {
-      background: #00cc6a;
+      .hero p {
+        font-size: 17px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="box">
-    <h1>Привіт, це мій сайт</h1>
-    <a> Заходіть </a>
+  <header>
+    <div class="logo">Illinois Oil Service</div>
 
-    <button onclick="showMessage()">Натисни мене</button>
+    <nav>
+      <a href="#home">Головна</a>
+      <a href="#services">Послуги</a>
+      <a href="#about">Про нас</a>
+      <a href="#contact">Підтримка</a>
+    </nav>
+  </header>
 
-    <p id="message"></p>
-  </div>
+  <section class="hero" id="home">
+    <h1>Заміна масла для будь-яких машин в Іллінойсі</h1>
+    <p>
+      Сімейний бізнес механіків. Швидка, чесна та якісна заміна масла
+      для легкових авто, SUV, пікапів та робочих машин.
+    </p>
 
-  <script>
-    function showMessage() {
-      document.getElementById("message").textContent = "Сайт працює!";
-    }
-  </script>
+    <a class="btn" href="#contact">Записатися</a>
+    <a class="btn" href="#services">Наші послуги</a>
+  </section>
+
+  <section id="services">
+    <h2>Наші послуги</h2>
+
+    <div class="services">
+      <div class="card">
+        <h3>Заміна масла</h3>
+        <p>Швидка заміна моторного масла для більшості автомобілів.</p>
+      </div>
+
+      <div class="card">
+        <h3>Заміна масляного фільтра</h3>
+        <p>Разом із маслом можемо замінити масляний фільтр.</p>
+      </div>
+
+      <div class="card">
+        <h3>Перевірка рідин</h3>
+        <p>Перевірка рівня охолоджуючої рідини, гальмівної рідини та інших базових рідин.</p>
+      </div>
+
+      <div class="card">
+        <h3>Перевірка авто</h3>
+        <p>Базовий огляд машини перед дорогою або після покупки.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>Про нас</h2>
+
+    <div class="about">
+      <p>
+        Ми — сімейний бізнес механіків в Іллінойсі. Наша ціль — допомагати людям
+        обслуговувати авто чесно, швидко і без зайвих переплат.
+      </p>
+      <br>
+      <p>
+        Ми працюємо з різними машинами: Toyota, Honda, Ford, Chevy, Jeep, RAM,
+        BMW, Mercedes, Hyundai, Kia та іншими.
+      </p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Підтримка та запис</h2>
+
+    <div class="contact-box">
+      <p><strong>Телефон:</strong> +1 (000) 000-0000</p>
+      <p><strong>Email:</strong> yourbusiness@email.com</p>
+      <p><strong>Локація:</strong> Illinois, USA</p>
+      <p><strong>Години роботи:</strong> Пн-Сб: 9:00 AM – 6:00 PM</p>
+      <br>
+      <a class="btn" href="tel:+10000000000">Подзвонити</a>
+      <a class="btn" href="mailto:yourbusiness@email.com">Написати Email</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Illinois Oil Service. Family owned business.</p>
+  </footer>
 
 </body>
 </html>
