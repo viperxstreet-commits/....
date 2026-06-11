@@ -1,255 +1,155 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Oil Change Service Illinois</title>
+        servicesTitle: "Our Services",
+        servicesIntro: "Basic maintenance without the noise: clear, careful, and straight to the point.",
+        serviceOilTitle: "Oil Change",
+        serviceOilText: "Quick engine oil changes for most vehicles.",
+        serviceFilterTitle: "Oil Filter Replacement",
+        serviceFilterText: "We can replace the oil filter together with the oil.",
+        serviceFluidsTitle: "Fluid Check",
+        serviceFluidsText: "Checks for coolant, brake fluid, and other basic vehicle fluids.",
+        serviceCheckTitle: "Vehicle Check",
+        serviceCheckText: "A basic inspection before a road trip or after buying a vehicle.",
+        aboutTitle: "About Us",
+        aboutIntro: "We help drivers maintain their vehicles honestly, quickly, and without extra overpaying.",
+        aboutTextOne: "We are a family-owned mechanic business in Illinois. Our goal is to make basic maintenance simple, clear, and dependable.",
+        aboutTextTwo: "We work with many vehicles: Toyota, Honda, Ford, Chevy, Jeep, RAM, BMW, Mercedes, Hyundai, Kia, and more.",
+        donationEyebrow: "Support a family business",
+        donationTitle: "Want to support our shop?",
+        donationIntro: "Every donation helps us buy quality supplies, tools, and keep improving service for local drivers.",
+        donationNoteOne: "Helps buy oil, filters, and shop supplies",
+        donationNoteTwo: "Supports a family-owned business in Illinois",
+        donationNoteThree: "Helps keep service fast, honest, and dependable",
+        donationChoose: "Choose a support amount",
+        donationCustomLabel: "Custom amount",
+        donationMethodLabel: "Donation method",
+        donatePayButton: "Donate",
+        donationFinePrint: "Thank you for supporting our family service.",
+        contactTitle: "Support and Booking",
+        contactIntro: "Call or email to confirm the time, vehicle, and oil type you need.",
+        phoneLabel: "Phone:",
+        emailLabel: "Email:",
+        locationLabel: "Location:",
+        hoursLabel: "Hours:",
+        hoursText: "Mon-Sat: 9:00 AM - 6:00 PM",
+        callButton: "Call Now",
+        emailButton: "Send Email",
+        footer: "© 2026 Illinois Oil Service. Family owned business."
+      }
+    };
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    const toggle = document.querySelector(".language-toggle");
+    const savedLanguage = localStorage.getItem("siteLanguage") || "uk";
+    const amountButtons = document.querySelectorAll(".amount-button");
+    const methodButtons = document.querySelectorAll(".method-button");
+    const customAmount = document.querySelector("#customAmount");
+    const selectedAmount = document.querySelector("#selectedAmount");
+    const donateLink = document.querySelector("#donateLink");
+    let currentDonationAmount = 25;
+    let currentDonationMethod = "paypal";
+
+    // Replace these placeholders with your real donation profiles.
+    const donationLinks = {
+      paypal: "https://www.paypal.com/paypalme/YourBusiness",
+      cashapp: "https://cash.app/$YourCashtag",
+      venmo: "https://venmo.com/yourbusiness",
+      zelleEmail: "yourbusiness@email.com"
+    };
+
+    function formatDonationAmount(amount) {
+      return `$${Number(amount).toLocaleString("en-US", { maximumFractionDigits: 0 })}`;
     }
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      color: #222;
-      line-height: 1.6;
-    }
+    function buildDonationUrl(method, amount) {
+      const cleanAmount = Math.max(1, Number(amount) || 25);
 
-    header {
-      background: #111;
-      color: white;
-      padding: 15px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .logo {
-      font-size: 22px;
-      font-weight: bold;
-      color: #ffcc00;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #ffcc00;
-    }
-
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
-                  url("https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=1600&q=80");
-      background-size: cover;
-      background-position: center;
-      color: white;
-      text-align: center;
-      padding: 120px 20px;
-    }
-
-    .hero h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 20px;
-      max-width: 700px;
-      margin: 0 auto 30px;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #ffcc00;
-      color: #111;
-      padding: 14px 25px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      margin: 5px;
-    }
-
-    .btn:hover {
-      background: #e6b800;
-    }
-
-    section {
-      padding: 70px 40px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    section h2 {
-      text-align: center;
-      font-size: 34px;
-      margin-bottom: 30px;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-    }
-
-    .card {
-      background: white;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      color: #111;
-    }
-
-    .about {
-      background: white;
-      border-radius: 15px;
-      padding: 35px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-    }
-
-    .contact-box {
-      background: #111;
-      color: white;
-      border-radius: 15px;
-      padding: 35px;
-      text-align: center;
-    }
-
-    .contact-box p {
-      margin: 10px 0;
-      font-size: 18px;
-    }
-
-    footer {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 25px;
-      margin-top: 40px;
-    }
-
-    @media (max-width: 700px) {
-      header {
-        flex-direction: column;
-        gap: 15px;
+      if (method === "cashapp") {
+        return `${donationLinks.cashapp}/${cleanAmount}`;
       }
 
-      nav a {
-        display: inline-block;
-        margin: 5px 8px;
+      if (method === "venmo") {
+        const note = encodeURIComponent("Donation to Illinois Oil Service");
+        return `${donationLinks.venmo}?txn=pay&amount=${cleanAmount}&note=${note}`;
       }
 
-      .hero h1 {
-        font-size: 34px;
+      if (method === "zelle") {
+        const subject = encodeURIComponent("Donation for Illinois Oil Service");
+        const body = encodeURIComponent(`Hi, I would like to donate ${formatDonationAmount(cleanAmount)} to Illinois Oil Service.`);
+        return `mailto:${donationLinks.zelleEmail}?subject=${subject}&body=${body}`;
       }
 
-      .hero p {
-        font-size: 17px;
-      }
+      return `${donationLinks.paypal}/${cleanAmount}`;
     }
-  </style>
-</head>
-<body>
 
-  <header>
-    <div class="logo">Illinois Oil Service</div>
+    function updateDonationButton() {
+      const dictionary = translations[document.documentElement.lang] || translations.uk;
+      const formattedAmount = formatDonationAmount(currentDonationAmount);
 
-    <nav>
-      <a href="#home">Головна</a>
-      <a href="#services">Послуги</a>
-      <a href="#about">Про нас</a>
-      <a href="#contact">Підтримка</a>
-    </nav>
-  </header>
+      selectedAmount.textContent = formattedAmount;
+      donateLink.textContent = `${dictionary.donatePayButton} ${formattedAmount}`;
+      donateLink.href = buildDonationUrl(currentDonationMethod, currentDonationAmount);
+      donateLink.setAttribute("aria-label", `${dictionary.donatePayButton} ${formattedAmount}`);
+    }
 
-  <section class="hero" id="home">
-    <h1>Заміна масла для будь-яких машин в Іллінойсі</h1>
-    <p>
-      Сімейний бізнес механіків. Швидка, чесна та якісна заміна масла
-      для легкових авто, SUV, пікапів та робочих машин.
-    </p>
+    function setLanguage(language) {
+      const dictionary = translations[language];
 
-    <a class="btn" href="#contact">Записатися</a>
-    <a class="btn" href="#services">Наші послуги</a>
-  </section>
+      document.documentElement.lang = language;
+      document.title = dictionary.title;
 
-  <section id="services">
-    <h2>Наші послуги</h2>
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const key = element.getAttribute("data-i18n");
+        element.textContent = dictionary[key];
+      });
 
-    <div class="services">
-      <div class="card">
-        <h3>Заміна масла</h3>
-        <p>Швидка заміна моторного масла для більшості автомобілів.</p>
-      </div>
+      toggle.setAttribute("aria-label", language === "uk" ? "Перемкнути мову на англійську" : "Switch language to Ukrainian");
+      localStorage.setItem("siteLanguage", language);
+      updateDonationButton();
+    }
 
-      <div class="card">
-        <h3>Заміна масляного фільтра</h3>
-        <p>Разом із маслом можемо замінити масляний фільтр.</p>
-      </div>
+    toggle.addEventListener("click", () => {
+      const nextLanguage = document.documentElement.lang === "uk" ? "en" : "uk";
+      setLanguage(nextLanguage);
+    });
 
-      <div class="card">
-        <h3>Перевірка рідин</h3>
-        <p>Перевірка рівня охолоджуючої рідини, гальмівної рідини та інших базових рідин.</p>
-      </div>
+    amountButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        currentDonationAmount = Number(button.dataset.amount);
+        customAmount.value = "";
 
-      <div class="card">
-        <h3>Перевірка авто</h3>
-        <p>Базовий огляд машини перед дорогою або після покупки.</p>
-      </div>
-    </div>
-  </section>
+        amountButtons.forEach((amountButton) => {
+          amountButton.classList.toggle("active", amountButton === button);
+        });
 
-  <section id="about">
-    <h2>Про нас</h2>
+        updateDonationButton();
+      });
+    });
 
-    <div class="about">
-      <p>
-        Ми — сімейний бізнес механіків в Іллінойсі. Наша ціль — допомагати людям
-        обслуговувати авто чесно, швидко і без зайвих переплат.
-      </p>
-      <br>
-      <p>
-        Ми працюємо з різними машинами: Toyota, Honda, Ford, Chevy, Jeep, RAM,
-        BMW, Mercedes, Hyundai, Kia та іншими.
-      </p>
-    </div>
-  </section>
+    customAmount.addEventListener("input", () => {
+      const enteredAmount = Number(customAmount.value);
 
-  <section id="contact">
-    <h2>Підтримка та запис</h2>
+      if (enteredAmount > 0) {
+        currentDonationAmount = enteredAmount;
+      }
 
-    <div class="contact-box">
-      <p><strong>Телефон:</strong> +1 (000) 000-0000</p>
-      <p><strong>Email:</strong> yourbusiness@email.com</p>
-      <p><strong>Локація:</strong> Illinois, USA</p>
-      <p><strong>Години роботи:</strong> Пн-Сб: 9:00 AM – 6:00 PM</p>
-      <br>
-      <a class="btn" href="tel:+10000000000">Подзвонити</a>
-      <a class="btn" href="mailto:yourbusiness@email.com">Написати Email</a>
-    </div>
-  </section>
+      amountButtons.forEach((button) => {
+        button.classList.toggle("active", Number(button.dataset.amount) === currentDonationAmount);
+      });
 
-  <footer>
-    <p>© 2026 Illinois Oil Service. Family owned business.</p>
-  </footer>
+      updateDonationButton();
+    });
 
+    methodButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        currentDonationMethod = button.dataset.method;
+
+        methodButtons.forEach((methodButton) => {
+          methodButton.classList.toggle("active", methodButton === button);
+        });
+
+        updateDonationButton();
+      });
+    });
+
+    setLanguage(savedLanguage);
+  </script>
 </body>
 </html>
